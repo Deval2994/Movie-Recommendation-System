@@ -7,9 +7,9 @@ movies = pk.load(open('movies.pkl','rb'))
 vector_dis = pk.load(open('vector_dis.pkl','rb'))
 
 def get_poster(id):
-    response = requests.get(f'https://api.themoviedb.org/3/movie/{id}?api_key={c.API_KEY}&language=en-US')
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{id}?api_key={c.API_KEY}&language=en-US")
     data = response.json()
-    return f'https://image.tmdb.org/t/p/w500{data['poster_path']}'
+    return f"https://image.tmdb.org/t/p/w500{data['poster_path']}"
 
 def recommend(movie):
     movie_index = int(movies[movies['title'] == movie].index[0])
