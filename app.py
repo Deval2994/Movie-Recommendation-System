@@ -3,8 +3,10 @@ import pickle as pk
 import requests
 import confedential as c
 
-movies = pk.load(open('movies.pkl','rb'))
-vector_dis = pk.load(open('vector_dis.pkl','rb'))
+with open('movies.pkl','rb') as movie_content:
+    movies = pk.load(movie_content)
+with open('vector_dis.pkl', 'rb') as vector_content:
+    vector_dis = pk.load(vector_content)
 
 def get_poster(id):
     response = requests.get(f"https://api.themoviedb.org/3/movie/{id}?api_key={c.API_KEY}&language=en-US")
