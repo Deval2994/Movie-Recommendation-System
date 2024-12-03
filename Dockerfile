@@ -15,8 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Expose the application port
-EXPOSE 5000
+EXPOSE 8501
 
-# Set the default command to run the application
-CMD ["python", "app.py"]
+# Command to run the app (Streamlit app assumed to be app.py)
+CMD ["streamlit", "run", "app.py"]
