@@ -1,20 +1,16 @@
+# Use an official Python runtime as a parent image
 FROM python:3.12-slim
 
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /app
 
-# Update package lists and install system dependencies (e.g., for Python packages requiring compilation)
-RUN apt-get update && apt-get install -y --no-install-recommends gcc
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Copy requirements first to leverage Docker caching for dependencies
-COPY requirements.txt .
-
-# Install Python dependencies
+# Install any needed dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY . .
-
+# Make port 8501 available for Streamlit
 EXPOSE 8501
 
 # Command to run the app (Streamlit app assumed to be app.py)
