@@ -1,7 +1,6 @@
 import streamlit as st
 import pickle as pk
 import requests
-import confedential as c
 
 with open('movies.pkl','rb') as movie_content:
     movies = pk.load(movie_content)
@@ -9,7 +8,7 @@ with open('vector_dis.pkl', 'rb') as vector_content:
     vector_dis = pk.load(vector_content)
 
 def get_poster(id):
-    response = requests.get(f"https://api.themoviedb.org/3/movie/{id}?api_key={c.API_KEY}&language=en-US")
+    response = requests.get(f"https://api.themoviedb.org/3/movie/{id}?api_key=9d7e5a2fe0324d13e3252f32eb576f8f&language=en-US")
     data = response.json()
     return f"https://image.tmdb.org/t/p/w500{data['poster_path']}"
 
